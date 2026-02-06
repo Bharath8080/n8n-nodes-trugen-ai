@@ -1,0 +1,69 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "seconds"
+            }
+          ]
+        }
+      },
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        820,
+        360
+      ],
+      "id": "1dcf3a89-1111-4444-9999-111111111111"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "name": "My Agent",
+        "system_prompt": "You are a helpful assistant.",
+        "email": "test@example.com",
+        "greeting": "Hello, how can I help you?",
+        "avatarSource": "stock",
+        "avatarStockId": "default_avatar",
+        "llmProvider": "openai",
+        "llmModel_openai": "gpt-4.1-mini",
+        "ttsProvider": "elevenlabs",
+        "ttsModel_elevenlabs": "eleven_turbo_v2_5",
+        "ttsVoiceId": "ZUrEGyu8GFMwnHbvLhv2",
+        "sttProvider": "deepgram",
+        "sttModel_deepgram": "nova-3",
+        "sttLanguage": "en"
+      },
+      "name": "Trugen",
+      "type": "n8n-nodes-trugen.trugen",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        360
+      ],
+      "credentials": {
+        "trugenApi": {
+          "id": "YOUR_CREDENTIAL_ID",
+          "name": "Trugen API account"
+        }
+      },
+      "id": "2dcf3a89-2222-4444-9999-222222222222"
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Trugen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}
