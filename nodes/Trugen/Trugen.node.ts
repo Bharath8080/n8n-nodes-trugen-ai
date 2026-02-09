@@ -870,6 +870,15 @@ allow="camera; microphone; autoplay"
 
 						const formattedResponse = trugenHelpers.formatResponse(responseData);
 
+						if (formattedResponse.data && Array.isArray(formattedResponse.data)) {
+							const avatars = formattedResponse.data as IDataObject[];
+							formattedResponse.data = avatars.map((avatar) => {
+								const cleanAvatar = { ...avatar };
+								delete cleanAvatar.display_picture;
+								return cleanAvatar;
+							}) as any;
+						}
+
 						returnItems.push({
 							json: formattedResponse,
 							pairedItem: { item: i },
